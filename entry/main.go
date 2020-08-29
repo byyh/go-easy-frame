@@ -12,8 +12,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/byyh/go-easy-frame/config"
-	"github.com/byyh/go-easy-frame/routers"
+	"go-easy-frame/config"
+	"go-easy-frame/routers"
 )
 
 func main() {

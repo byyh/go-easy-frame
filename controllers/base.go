@@ -1,7 +1,7 @@
 package ctr
 
 import (
-	"github.com/byyh/go-easy-frame/services/atom"
+	"go-easy-frame/services/atom"
 
 	"github.com/gin-gonic/gin"
 )

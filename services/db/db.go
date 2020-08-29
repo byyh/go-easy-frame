@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/byyh/go-easy-frame/config"
+	"go-easy-frame/config"
 
 	_ "github.com/go-sql-driver/mysql"
 

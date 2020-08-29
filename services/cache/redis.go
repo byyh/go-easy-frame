@@ -7,7 +7,7 @@ import (
 
 	"github.com/byyh/go/com"
 	"github.com/go-redis/redis"
-	"github.com/byyh/go-easy-frame/config"
+	"go-easy-frame/config"
 )
 
 const Nil = redis.Nil

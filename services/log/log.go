@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/byyh/go-easy-frame/config"
+	"go-easy-frame/config"
 
 	"github.com/byyh/go/com"
 	"github.com/fluent/fluent-logger-golang/fluent"

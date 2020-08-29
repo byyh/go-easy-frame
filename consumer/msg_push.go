@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/byyh/go-easy-frame/config"
-	"github.com/byyh/go-easy-frame/services/queue"
+	"go-easy-frame/config"
+	"go-easy-frame/services/queue"
 )
 
 // 消息推送队列消费

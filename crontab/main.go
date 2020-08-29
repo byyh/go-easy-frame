@@ -7,7 +7,7 @@ package main
 import (
 	"log"
 
-	"github.com/byyh/go-easy-frame/crontab/user"
+	"go-easy-frame/crontab/user"
 
 	"github.com/robfig/cron"
 )

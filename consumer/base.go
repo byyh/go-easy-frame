@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/byyh/go-easy-frame/services/log"
-	"github.com/byyh/go-easy-frame/services/queue"
+	"go-easy-frame/services/log"
+	"go-easy-frame/services/queue"
 	"runtime/debug"
 
 	"fmt"

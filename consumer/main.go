@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/byyh/go-easy-frame/services/db"
-	"github.com/byyh/go-easy-frame/services/log"
+	"go-easy-frame/services/db"
+	"go-easy-frame/services/log"
 	"os"
 	"reflect"
 )

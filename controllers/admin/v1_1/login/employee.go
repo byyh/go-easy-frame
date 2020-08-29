@@ -1,7 +1,7 @@
 package ctrAdminV1_1Login
 
 import (
-	"github.com/byyh/go-easy-frame/controllers"
+	"go-easy-frame/controllers"
 
 	"github.com/gin-gonic/gin"
 )

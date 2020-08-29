@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/byyh/go-easy-frame/controllers/admin/v1_1/login"
+	"go-easy-frame/controllers/admin/v1_1/login"
 
 	"github.com/gin-gonic/gin"
 )
