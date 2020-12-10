@@ -19,17 +19,11 @@ func (this *BaseController) Success(ctx *gin.Context, res interface{}) {
 }
 
 // 返回失败
-func (this *BaseController) Failed(ctx *gin.Context, code int, msg string) {
-	ctx.JSON(200, gin.H{
-		"code":    code,
-		"message": msg,
-		"data":    nil,
-	})
+func (this *BaseController) Failed(code int, msg string) {
+	panic(atom.NewMyError(msg, code))
 }
 
-// 返回非200
-func (this *BaseController) OutHttpError(ctx *gin.Context, httpCode int, msg string) {
-	ctx.JSON(httpCode, gin.H{
-		"message": msg,
-	})
+// 返回非200HTTP状态码
+func (this *BaseController) OutHttpError(httpCode int, msg string) {
+	panic(atom.NewMyErrorByHttpStatus(msg, httpCode))
 }

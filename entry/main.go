@@ -17,18 +17,19 @@ import (
 )
 
 func main() {
+	cfg := config.GetEnv()
+	gin.SetMode(cfg.GinMode)
+
 	router := routers.Get()
 
-	router.Use(gin.Logger())
-	router.Use(gin.Recovery())
+	//router.Use(gin.Logger())
 
-	cfg := config.GetEnv()
 	srv := &http.Server{
 		Addr:           ":" + strconv.Itoa(cfg.Port),
 		Handler:        router,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
-		MaxHeaderBytes: 1 << 20,
+		MaxHeaderBytes: 1 << 14, // 16k左右
 	}
 
 	go func() {

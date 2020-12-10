@@ -16,6 +16,7 @@ var (
 
 // 需要根据实际情况配置该结构图属性
 type Config struct {
+	GinMode string `env:"GIN_MODE"`
 	App     string
 	Port    int      `default:"8000"`
 	IsDebug bool     `env:"DEBUG"`
@@ -56,9 +57,9 @@ func init() {
 
 	cfg = &Config{}
 	env.IgnorePrefix()
-	err := env.Fill(&cfg)
+	err := env.Fill(cfg)
 	if err != nil {
-		log.Println("设置env错误：", err)
+		log.Println("设置env错误：", err, cfg)
 		panic(err)
 	}
 }
