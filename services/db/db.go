@@ -12,6 +12,7 @@ package db
 
 import (
 	"fmt"
+	"sync"
 	"time"
 
 	"go-easy-frame/config"
@@ -27,11 +28,19 @@ var (
 	gormDbSelfDefined *gorm.DB
 	IsInitDb          bool
 	selfDns           string
+	initLock          sync.Mutex
 
 	err error
 )
 
+func init() {
+	InitDb()
+}
+
 func New() *gorm.DB {
+	initLock.Lock()
+	defer initLock.Unlock()
+
 	if !IsInitDb {
 		InitDb()
 	}

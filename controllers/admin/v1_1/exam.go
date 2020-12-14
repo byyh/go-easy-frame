@@ -18,6 +18,10 @@ import (
 	"github.com/go-redis/redis"
 )
 
+var (
+	rwLock sync.RWMutex
+)
+
 type Exam struct {
 	ctr.BaseController
 }
@@ -32,9 +36,8 @@ func (this *Exam) Db(ctx *gin.Context) {
 	inputParam.ParamsValidator()
 
 	//
-	var syncW sync.WaitGroup
-
 	ob := db.New()
+	var syncW sync.WaitGroup
 
 	// 获取企业id
 
@@ -86,7 +89,10 @@ func (this *Exam) Db(ctx *gin.Context) {
 
 	tm := 16 * 3600 * time.Second // 16小时
 	valStr := string(val)
-	fmt.Println(key, valStr, tm)
+
+	rwLock.Lock()
+	defer rwLock.Unlock()
+
 	err = ocah.Set(key, valStr, tm).Err()
 	if err != nil {
 		panic(err)
@@ -111,6 +117,9 @@ func (this *Exam) Redis(ctx *gin.Context) {
 	key := "K1_TABLE_USER-" + strconv.Itoa(int(inputParam.UcId))
 
 	ocah := cache.New()
+
+	rwLock.RLock()
+	defer rwLock.RUnlock()
 
 	val, err := ocah.Get(key).Result()
 	if err == redis.Nil {

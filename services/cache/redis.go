@@ -3,6 +3,7 @@ package cache
 import (
 	"log"
 	"strconv"
+	"sync"
 
 	"go-easy-frame/config"
 
@@ -12,7 +13,8 @@ import (
 const Nil = redis.Nil
 
 var (
-	RedisClient *redis.Client
+	RedisClient   *redis.Client
+	initRedisLock sync.Mutex
 )
 
 func init() {
@@ -24,6 +26,8 @@ func New() *redis.Client {
 }
 
 func InitCache() {
+	initRedisLock.Lock()
+	defer initRedisLock.Unlock()
 	InitCliRedis()
 }
 
